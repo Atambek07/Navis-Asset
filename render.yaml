@@ -1,15 +1,11 @@
-# Exported from Render on 2025-08-01T04:57:15Z
 services:
-- type: web
-  name: Navis-Asset
-  runtime: python
-  repo: https://github.com/Atambek07/Navis-Asset
-  plan: free
-  envVars:
-  - key: DJANGO_SETTINGS_MODULE
-    sync: false
-  region: oregon
-  buildCommand: pip install -r requirements.txt
-  startCommand: gunicorn core.wsgi:application
-  autoDeployTrigger: commit
-version: "1"
+  - type: web
+    name: navis-api
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn core.wsgi:application"
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
