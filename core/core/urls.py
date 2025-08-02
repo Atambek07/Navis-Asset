@@ -8,7 +8,7 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
+    path('api/', include('main.urls')),
 
     # spectacular schema + swagger + redoc
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
