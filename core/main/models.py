@@ -14,8 +14,11 @@ class Partner(models.Model):
 
 
 class FAQ(models.Model):
-    question = models.TextField(max_length=500, verbose_name='Вопросы')
+    question = models.CharField(max_length=500, verbose_name='Вопросы')
     answer = models.TextField(max_length=500, verbose_name='Ответы')
+
+    def __str__(self):
+        return self.question
 
     class Meta:
         db_table = 'FAQ'
@@ -23,8 +26,8 @@ class FAQ(models.Model):
 
 class News(models.Model):
     title = models.CharField(max_length=250)
-    content = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
+    content = models.TextField(null=True, blank=True)
+    date = models.DateTimeField()
     image = models.ImageField(upload_to='images/news/')
 
     def __str__(self):
@@ -39,7 +42,7 @@ class Feedback(models.Model):
     user_name = models.CharField(max_length=250)
     rate = models.IntegerField(default=0.0)
     content = models.TextField()
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField()
 
     def __str__(self):
         return self.user_name
