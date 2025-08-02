@@ -135,7 +135,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://navis-asset-1.onrender.com",
+    "https://navis-asset.onrender.com",
 ]
 CORS_ALLOW_METHODS = (
     "DELETE",
