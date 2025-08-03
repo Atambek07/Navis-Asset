@@ -1,13 +1,17 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import PartnerViewSet, FAQViewSet, NewsViewSet, FeedbackViewSet
-
-router = DefaultRouter()
-router.register(r'partners', PartnerViewSet)
-router.register(r'faqs', FAQViewSet)
-router.register(r'news', NewsViewSet)
-router.register(r'feedbacks', FeedbackViewSet)
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('news-list/', views.NewsList.as_view()),
+    path('news-detail/<int:pk>/', views.NewsDetail.as_view()),
+
+    path('faq-list/', views.FAQList.as_view()),
+    path('faq-detail/<int:pk>/', views.FAQDetail.as_view()),
+
+    path('partner-list/', views.PartnerList.as_view()),
+    path('partner-detail/<int:pk>/', views.PartnerDetail.as_view()),
+
+    path('feedback-list/', views.FeedbackList.as_view()),
+    path('feedback-detail/<int:pk>/', views.FeedbackDetail.as_view()),
+
 ]
