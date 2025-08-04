@@ -68,6 +68,7 @@ class Application(models.Model):
         ('exchange', 'Биржевой'),
         ('paper', 'Бумажный'),
     ]
+    agreement = models.BooleanField(default=False)
 
 
     name = models.CharField(max_length=250, verbose_name='Имя')
